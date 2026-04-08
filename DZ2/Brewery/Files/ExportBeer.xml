@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBeer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />  <Beer>
+    <Id>a707340a-33b5-4a76-8e81-f7e70c373d51</Id>
+    <Name>Стаут</Name>
+    <AlcoholPercentage>7.5</AlcoholPercentage>
+    <BeerType>Porter</BeerType>
+  </Beer>
+  <Beer>
+    <Id>beb77ab8-efbb-41c8-b4f9-cc8176521409</Id>
+    <Name>Светлое пиво</Name>
+    <AlcoholPercentage>4.5</AlcoholPercentage>
+    <BeerType>Light</BeerType>
+  </Beer>
+  <Beer>
+    <Id>a8c977d7-fd8b-4e35-989f-3ee355e5b18e</Id>
+    <Name>Стаут</Name>
+    <AlcoholPercentage>7.5</AlcoholPercentage>
+    <BeerType>Porter</BeerType>
+  </Beer>
+</ArrayOfBeer>
