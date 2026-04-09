@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode4 = new TreeNode("Пиво");
-            TreeNode treeNode5 = new TreeNode("Рецепты");
-            TreeNode treeNode6 = new TreeNode("Ингредиенты");
+            TreeNode treeNode7 = new TreeNode("Пиво");
+            TreeNode treeNode8 = new TreeNode("Рецепты");
+            TreeNode treeNode9 = new TreeNode("Ингредиенты");
             mainTreeView = new TreeView();
             dataGridView1 = new DataGridView();
             splitContainer1 = new SplitContainer();
@@ -46,13 +46,13 @@
             tabControlMain = new TabControl();
             tagPageStorage = new TabPage();
             tabPageBrewery = new TabPage();
+            pictureBox1 = new PictureBox();
             splitter2 = new Splitter();
             buttonStartBrew = new Button();
             splitter1 = new Splitter();
             labelMainText = new Label();
             comboBoxRecipe = new ComboBox();
             labelForComboBox = new Label();
-            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -71,16 +71,16 @@
             mainTreeView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainTreeView.Location = new Point(3, 110);
             mainTreeView.Name = "mainTreeView";
-            treeNode4.Name = "BeerNode";
-            treeNode4.Tag = "BeerNode";
-            treeNode4.Text = "Пиво";
-            treeNode5.Name = "RecipeNode";
-            treeNode5.Tag = "RecipeNode";
-            treeNode5.Text = "Рецепты";
-            treeNode6.Name = "IngredientNode";
-            treeNode6.Tag = "IngredientNode";
-            treeNode6.Text = "Ингредиенты";
-            mainTreeView.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
+            treeNode7.Name = "BeerNode";
+            treeNode7.Tag = "BeerNode";
+            treeNode7.Text = "Пиво";
+            treeNode8.Name = "RecipeNode";
+            treeNode8.Tag = "RecipeNode";
+            treeNode8.Text = "Рецепты";
+            treeNode9.Name = "IngredientNode";
+            treeNode9.Tag = "IngredientNode";
+            treeNode9.Text = "Ингредиенты";
+            mainTreeView.Nodes.AddRange(new TreeNode[] { treeNode7, treeNode8, treeNode9 });
             mainTreeView.Size = new Size(259, 364);
             mainTreeView.TabIndex = 0;
             mainTreeView.AfterSelect += mainTreeView_AfterSelect;
@@ -91,6 +91,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 31);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(661, 443);
             dataGridView1.TabIndex = 1;
@@ -221,6 +222,16 @@
             tabPageBrewery.Text = "Варочная";
             tabPageBrewery.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.wooden;
+            pictureBox1.Location = new Point(35, 40);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(335, 412);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
             // splitter2
             // 
             splitter2.Location = new Point(7, 3);
@@ -261,8 +272,9 @@
             // comboBoxRecipe
             // 
             comboBoxRecipe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            comboBoxRecipe.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRecipe.FormattingEnabled = true;
-            comboBoxRecipe.Location = new Point(702, 207);
+            comboBoxRecipe.Location = new Point(702, 210);
             comboBoxRecipe.Name = "comboBoxRecipe";
             comboBoxRecipe.Size = new Size(159, 28);
             comboBoxRecipe.TabIndex = 0;
@@ -277,16 +289,6 @@
             labelForComboBox.Size = new Size(170, 28);
             labelForComboBox.TabIndex = 4;
             labelForComboBox.Text = "Выберите рецепт";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.wooden;
-            pictureBox1.Location = new Point(35, 40);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(335, 412);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
