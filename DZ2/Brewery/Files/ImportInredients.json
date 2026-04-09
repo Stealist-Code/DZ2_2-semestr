@@ -3,7 +3,9 @@
     "Ingredient": {
       "Id": "6faf739a-b642-45c6-81a8-2f6ea4d16466",
       "Name": "Ячменный солод",
-      "UnitMeasurement": "кг"
+      "UnitMeasurement": "кг",
+      "Date": "2026-03-09",
+      "CountryManufacture": "Россия"
     },
     "Quantity": 100
   },
@@ -11,7 +13,9 @@
     "Ingredient": {
       "Id": "2abb868f-f551-47b2-b367-96cd7bb6894c",
       "Name": "Вода",
-      "UnitMeasurement": "л"
+      "UnitMeasurement": "л",
+      "Date": "2026-02-04",
+      "CountryManufacture": "Россия"
     },
     "Quantity": 100
   },
@@ -19,7 +23,9 @@
     "Ingredient": {
       "Id": "5fac8d0f-517e-494c-93b6-e97a7045966b",
       "Name": "Хмель Галлетауэр",
-      "UnitMeasurement": "кг"
+      "UnitMeasurement": "кг",
+      "Date": "2026-04-09",
+      "CountryManufacture": "Чехия"
     },
     "Quantity": 100
   },
@@ -27,7 +33,9 @@
     "Ingredient": {
       "Id": "f1d4eee5-5c9f-4f01-88ae-0bd58c242e16",
       "Name": "Карамельный солод",
-      "UnitMeasurement": "кг"
+      "UnitMeasurement": "кг",
+      "Date": "2026-02-04",
+      "CountryManufacture": "Чехия"
     },
     "Quantity": 150
   },
@@ -35,7 +43,9 @@
     "Ingredient": {
       "Id": "94405347-e83f-44eb-9819-30c1b96985a8",
       "Name": "Хмель Цитра",
-      "UnitMeasurement": "кг"
+      "UnitMeasurement": "кг",
+      "Date": "2026-02-04",
+      "CountryManufacture": "Белоруссия"
     },
     "Quantity": 80
   }

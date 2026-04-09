@@ -1,14 +1,26 @@
 ﻿using Brewery.Enums;
+using System.ComponentModel;
 
 namespace Brewery.Classes
 {
     public class Recipe
     {
+        [DisplayName("Id")]
         public Guid Id { get; set; }
+
+        [DisplayName("Название рецепта")]
         public string Name { get; set; }
+
+        [DisplayName("Название пива")]
         public string NameBeer { get; set; }
+
+        [DisplayName("Сорт пива")]
         public BeerType BeerType { get; set; }
+
+        [DisplayName("Содержание алкоголя (%)")]
         public double AlcoholPercentage { get; set; }
+
+        [DisplayName("Ингредиенты")]
         public Dictionary<Ingredient, long> Ingredients { get; set; } = new Dictionary<Ingredient, long>();
 
         public Recipe() { }
@@ -24,7 +36,12 @@ namespace Brewery.Classes
 
         public Beer Brew()
         {
-            return new Beer(NameBeer, AlcoholPercentage, BeerType);
+            return new Beer(NameBeer, AlcoholPercentage, BeerType, this);
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

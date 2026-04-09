@@ -5,6 +5,8 @@
       <Id>6faf739a-b642-45c6-81a8-2f6ea4d16466</Id>
       <Name>Ячменный солод</Name>
       <UnitMeasurement>кг</UnitMeasurement>
+      <Date>2026-03-09</Date>
+      <CountryManufacture>Россия</CountryManufacture>
     </Ingredient>
     <Quantity>100</Quantity>
   </StockIngredient>
@@ -13,6 +15,8 @@
       <Id>2abb868f-f551-47b2-b367-96cd7bb6894c</Id>
       <Name>Вода</Name>
       <UnitMeasurement>л</UnitMeasurement>
+      <Date>2026-02-04</Date>
+      <CountryManufacture>Россия</CountryManufacture>
     </Ingredient>
     <Quantity>100</Quantity>
   </StockIngredient>
@@ -21,6 +25,8 @@
       <Id>5fac8d0f-517e-494c-93b6-e97a7045966b</Id>
       <Name>Хмель Галлетауэр</Name>
       <UnitMeasurement>кг</UnitMeasurement>
+      <Date>2026-04-09</Date>
+      <CountryManufacture>Чехия</CountryManufacture>
     </Ingredient>
     <Quantity>100</Quantity>
   </StockIngredient>
@@ -29,6 +35,8 @@
       <Id>f1d4eee5-5c9f-4f01-88ae-0bd58c242e16</Id>
       <Name>Карамельный солод</Name>
       <UnitMeasurement>кг</UnitMeasurement>
+      <Date>2026-02-04</Date>
+      <CountryManufacture>Чехия</CountryManufacture>
     </Ingredient>
     <Quantity>150</Quantity>
   </StockIngredient>
@@ -37,6 +45,8 @@
       <Id>94405347-e83f-44eb-9819-30c1b96985a8</Id>
       <Name>Хмель Цитра</Name>
       <UnitMeasurement>кг</UnitMeasurement>
+      <Date>2026-02-04</Date>
+      <CountryManufacture>Белоруссия</CountryManufacture>
     </Ingredient>
     <Quantity>80</Quantity>
   </StockIngredient>

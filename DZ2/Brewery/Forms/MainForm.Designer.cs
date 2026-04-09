@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode7 = new TreeNode("Пиво");
-            TreeNode treeNode8 = new TreeNode("Рецепты");
-            TreeNode treeNode9 = new TreeNode("Ингредиенты");
+            TreeNode treeNode1 = new TreeNode("Пиво");
+            TreeNode treeNode2 = new TreeNode("Рецепты");
+            TreeNode treeNode3 = new TreeNode("Ингредиенты");
             mainTreeView = new TreeView();
             dataGridView1 = new DataGridView();
             splitContainer1 = new SplitContainer();
@@ -41,7 +41,6 @@
             импортРецептовToolStripMenuItem = new ToolStripMenuItem();
             экспортироватьДанныеToolStripMenuItem = new ToolStripMenuItem();
             экспортВJSONToolStripMenuItem = new ToolStripMenuItem();
-            экспортВXMLToolStripMenuItem = new ToolStripMenuItem();
             importOpenFileDialog = new OpenFileDialog();
             tabControlMain = new TabControl();
             tagPageStorage = new TabPage();
@@ -71,16 +70,16 @@
             mainTreeView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainTreeView.Location = new Point(3, 110);
             mainTreeView.Name = "mainTreeView";
-            treeNode7.Name = "BeerNode";
-            treeNode7.Tag = "BeerNode";
-            treeNode7.Text = "Пиво";
-            treeNode8.Name = "RecipeNode";
-            treeNode8.Tag = "RecipeNode";
-            treeNode8.Text = "Рецепты";
-            treeNode9.Name = "IngredientNode";
-            treeNode9.Tag = "IngredientNode";
-            treeNode9.Text = "Ингредиенты";
-            mainTreeView.Nodes.AddRange(new TreeNode[] { treeNode7, treeNode8, treeNode9 });
+            treeNode1.Name = "BeerNode";
+            treeNode1.Tag = "BeerNode";
+            treeNode1.Text = "Пиво";
+            treeNode2.Name = "RecipeNode";
+            treeNode2.Tag = "RecipeNode";
+            treeNode2.Text = "Рецепты";
+            treeNode3.Name = "IngredientNode";
+            treeNode3.Tag = "IngredientNode";
+            treeNode3.Text = "Ингредиенты";
+            mainTreeView.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
             mainTreeView.Size = new Size(259, 364);
             mainTreeView.TabIndex = 0;
             mainTreeView.AfterSelect += mainTreeView_AfterSelect;
@@ -95,6 +94,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(661, 443);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // splitContainer1
             // 
@@ -159,7 +159,7 @@
             // 
             // экспортироватьДанныеToolStripMenuItem
             // 
-            экспортироватьДанныеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВJSONToolStripMenuItem, экспортВXMLToolStripMenuItem });
+            экспортироватьДанныеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВJSONToolStripMenuItem });
             экспортироватьДанныеToolStripMenuItem.Name = "экспортироватьДанныеToolStripMenuItem";
             экспортироватьДанныеToolStripMenuItem.Size = new Size(193, 24);
             экспортироватьДанныеToolStripMenuItem.Text = "Экспортировать данные";
@@ -170,13 +170,6 @@
             экспортВJSONToolStripMenuItem.Size = new Size(199, 26);
             экспортВJSONToolStripMenuItem.Text = "Экспорт в JSON";
             экспортВJSONToolStripMenuItem.Click += экспортВJSONToolStripMenuItem_Click;
-            // 
-            // экспортВXMLToolStripMenuItem
-            // 
-            экспортВXMLToolStripMenuItem.Name = "экспортВXMLToolStripMenuItem";
-            экспортВXMLToolStripMenuItem.Size = new Size(199, 26);
-            экспортВXMLToolStripMenuItem.Text = "Экспорт в XML";
-            экспортВXMLToolStripMenuItem.Click += экспортВXMLToolStripMenuItem_Click;
             // 
             // importOpenFileDialog
             // 
@@ -325,7 +318,6 @@
         private ToolStripMenuItem экспортироватьДанныеToolStripMenuItem;
         private OpenFileDialog importOpenFileDialog;
         private ToolStripMenuItem экспортВJSONToolStripMenuItem;
-        private ToolStripMenuItem экспортВXMLToolStripMenuItem;
         private PictureBox pictureBoxBeer;
         private ToolStripMenuItem импортИнгредиентовToolStripMenuItem;
         private ToolStripMenuItem импортРецептовToolStripMenuItem;

@@ -5,15 +5,11 @@ namespace Brewery.ServiceClasses
 {
     public class BreweryService
     {
-        List<Recipe> recipes;
-        List<Ingredient> ingredients;
         List<StockIngredient> stockIngredients;
         List<Beer> beers;
 
         public BreweryService()
         {
-            recipes = Data.Recipes;
-            ingredients = Data.Ingredients;
             stockIngredients = Data.StockIngredients;
             beers = Data.Beers;
         }
@@ -32,7 +28,7 @@ namespace Brewery.ServiceClasses
                         arrayStock[count] = ingredientOrNull;
                         count += 1;
                     }
-                    catch (System.IndexOutOfRangeException)
+                    catch (IndexOutOfRangeException)
                     {
                         return false;
                     }

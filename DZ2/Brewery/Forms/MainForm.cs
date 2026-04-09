@@ -26,6 +26,9 @@ namespace Brewery.Forms
         {
             var table = new DataTable();
 
+            dataGridView1.DataSource = null;
+
+            var beerImportNull = false;
             table.Columns.Add("Название", typeof(string));
             table.Columns.Add("Содержание алкоголя (%)", typeof(double));
             table.Columns.Add("Сорт пива", typeof(BeerType));
@@ -35,6 +38,7 @@ namespace Brewery.Forms
                 foreach (var beer in Data.Beers)
                 {
                     table.Rows.Add(beer.Name, beer.AlcoholPercentage, beer.BeerType);
+                    beerImportNull = true;
                 }
             }
             else
@@ -44,6 +48,20 @@ namespace Brewery.Forms
 
             dataGridView1.DataSource = table;
 
+            if (beerImportNull)
+            {
+                for (var i = 0; i < Data.Beers.Count; i++)
+                {
+                    dataGridView1.Rows[i].Tag = Data.Beers[i];
+                }
+            }
+            else
+            {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows[0].Tag = beerImport;
+                }
+            }
         }
 
         private void mainForm_DataLoadIngredients(StockIngredient stockIngredientImport = null)
@@ -51,6 +69,7 @@ namespace Brewery.Forms
 
             var table = new DataTable();
 
+            var stockIngredientImportNull = false;
             table.Columns.Add("Название", typeof(string));
             table.Columns.Add("Количество", typeof(int));
 
@@ -59,6 +78,7 @@ namespace Brewery.Forms
                 foreach (var stockIngredient in Data.StockIngredients)
                 {
                     table.Rows.Add(stockIngredient.Ingredient.Name, stockIngredient.Quantity);
+                    stockIngredientImportNull = true;
                 }
             }
             else
@@ -68,12 +88,27 @@ namespace Brewery.Forms
 
             dataGridView1.DataSource = table;
 
+            if (stockIngredientImportNull)
+            {
+                for (var i = 0; i < Data.StockIngredients.Count; i++)
+                {
+                    dataGridView1.Rows[i].Tag = Data.StockIngredients[i];
+                }
+            }
+            else
+            {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows[0].Tag = stockIngredientImport;
+                }
+            }
         }
 
         private void mainForm_DataLoadRecipes(Recipe recipeImport = null)
         {
             var table = new DataTable();
 
+            var recipeImportNull = false;
             table.Columns.Add("Название Рецепта", typeof(string));
             table.Columns.Add("Название Пива", typeof(string));
             table.Columns.Add("Сорт пива", typeof(BeerType));
@@ -83,14 +118,27 @@ namespace Brewery.Forms
             {
                 foreach (var recipe in Data.Recipes)
                 {
-                    table.Rows.Add(recipe.Name, recipe.NameBeer, recipe.BeerType, string.Join("\n", recipe.Ingredients.Select(p => $"{p.Key.Name} : {p.Value} {p.Key.UnitMeasurement}")));
+                    var row = table.Rows.Add(recipe.Name, recipe.NameBeer, recipe.BeerType, string.Join("\n", recipe.Ingredients.Select(p => $"{p.Key.Name} : {p.Value} {p.Key.UnitMeasurement}")));
                 }
+                recipeImportNull = true;
             }
             else
             {
                 table.Rows.Add(recipeImport.Name, recipeImport.NameBeer, recipeImport.BeerType, string.Join("\n", recipeImport.Ingredients.Select(p => $"{p.Key.Name} : {p.Value} {p.Key.UnitMeasurement}")));
             }
             dataGridView1.DataSource = table;
+
+            if (recipeImportNull)
+            {
+                for (var i = 0; i < Data.Recipes.Count; i++)
+                {
+                    dataGridView1.Rows[i].Tag = Data.Recipes[i];
+                }
+            }
+            else
+            {
+                dataGridView1.Rows[0].Tag = recipeImport;
+            }
         }
 
         private void WorkToNode()
@@ -166,12 +214,13 @@ namespace Brewery.Forms
         private void экспортВJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.Create(UnicodeRanges.Cyrillic, UnicodeRanges.BasicLatin) };
+            options.Converters.Add(new IngredientConverter());
             var beersList = Data.Beers.ToList();
             var json = JsonSerializer.Serialize(beersList, options);
             try
             {
                 File.WriteAllText(@"..\..\..\Files\ExportBeer.json", json);
-                MessageBox.Show("Успешно.");
+                MessageBox.Show("Успешно. Данные о пивах экспортировались");
             }
             catch
             {
@@ -183,7 +232,7 @@ namespace Brewery.Forms
         private void экспортВXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var beersList = Data.Beers;
-            var xmlSerializer = new XmlSerializer(typeof(List<Beer>));
+            var xmlSerializer = new XmlSerializer(typeof(List<StockIngredient>));
 
             try
             {
@@ -249,7 +298,7 @@ namespace Brewery.Forms
 
                 var count = 0;
 
-                if (stockIngredients != null && Data.StockIngredients != null)
+                if (stockIngredients is not null && Data.StockIngredients is not null)
                 {
                     foreach (var stockIngredient in stockIngredients)
                     {
@@ -298,7 +347,7 @@ namespace Brewery.Forms
             try
             {
                 var filename = importOpenFileDialog.FileName;
-                var fileText = System.IO.File.ReadAllText(filename);
+                var fileText = File.ReadAllText(filename);
 
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.Create(UnicodeRanges.Cyrillic, UnicodeRanges.BasicLatin) };
                 options.Converters.Add(new IngredientConverter());
@@ -307,11 +356,11 @@ namespace Brewery.Forms
 
                 var count = 0;
 
-                if (recipes != null)
+                if (recipes is not null)
                 {
                     foreach (var recipe in recipes)
                     {
-                        if (recipe.Name == null)
+                        if (recipe.Name is null)
                         {
                             continue;
                         }
@@ -351,9 +400,30 @@ namespace Brewery.Forms
 
         private void ImportDataFromJSON(string filename, out List<StockIngredient>? stockIngredients)
         {
-            var fileText = System.IO.File.ReadAllText(filename);
+            var fileText = File.ReadAllText(filename);
 
             stockIngredients = JsonSerializer.Deserialize<List<StockIngredient>>(fileText);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+                return;
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                var selectedObject = selectedRow.Tag;
+
+                if (selectedObject is null)
+                {
+                    return;
+                }
+
+                var descriptionForm = new DescriptionForm(selectedObject);
+                descriptionForm.ShowDialog();
+            }
         }
     }
 }
